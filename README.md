@@ -1,18 +1,18 @@
 # AWS WordPress Terraform
 
-Este repositório contém a configuração de infraestrutura como código (IaC) para provisionar um ambiente WordPress na AWS utilizando Terraform e Docker.
+This repository contains infrastructure as code (IaC) configuration to provision a WordPress environment on AWS using Terraform and Docker.
 
-## Estrutura do Projeto
+## Project Structure
 
-- **Terraform**: Scripts para criar a infraestrutura na AWS.
-- **EC2 + Docker**: Instância EC2 configurada via User Data para rodar o WordPress dentro de um container.
-- **RDS**: Banco de dados MySQL gerenciado na AWS.
-- **Security Groups**: Controle de acesso à rede.
-- **S3 (Opcional)**: Armazenamento para arquivos estáticos.
+- **Terraform**: Scripts to define and deploy the AWS infrastructure.
+- **EC2 + Docker**: EC2 instance configured via User Data to run WordPress inside a Docker container.
+- **RDS**: Managed MySQL database on AWS.
+- **Security Groups**: Network access control rules.
+- **S3 (Optional)**: Storage for static assets (e.g. images, backups).
 
-## Como Usar
+## How to Use
 
-1. Clone o repositório:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/teu-usuario/aws-wp-tf.git
+   git clone https://github.com/your-username/aws-wp-tf.git
    cd aws-wp-tf
