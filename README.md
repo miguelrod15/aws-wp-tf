@@ -18,4 +18,4 @@ This repository contains infrastructure as code (IaC) configuration to provision
    ```bash
    git clone https://github.com/your-username/aws-wp-tf.git
    cd aws-wp-tf
-7ec97af8599b81fae03a6f222a234f240a5e7c0b
+
