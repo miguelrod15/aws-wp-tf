@@ -12,20 +12,30 @@ resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "eu-west-a"
+  availability_zone       = "eu-west-2a"
 
   tags = {
     Name = "public-subnet"
   }
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "private_a" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.0.2.0/24"
+  cidr_block        = var.private_subnet_cidr_a
   availability_zone = "eu-west-2a"
 
   tags = {
-    Name = "private-subnet"
+    Name = "private-subnet-a"
+  }
+}
+
+resource "aws_subnet" "private_b" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.private_subnet_cidr_b
+  availability_zone = "eu-west-2b"
+
+  tags = {
+    Name = "private-subnet-b"
   }
 }
 
