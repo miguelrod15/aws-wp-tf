@@ -1,20 +1,19 @@
 #!/bin/bash
-# Update packages and install Docker
+# Update and install required packages
 sudo apt update -y
 sudo apt install -y docker.io unzip curl
 
-# Start and enable Docker
-sudo systemctl start docker
+# Enable and start Docker
 sudo systemctl enable docker
+sudo systemctl start docker
 
 # Install CloudWatch Agent
 cd /opt
-sudo curl -O https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+curl -O https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
 
-# Create CloudWatch Agent config file
-sudo mkdir -p /opt/aws/amazon-cloudwatch-agent/etc
-sudo tee /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json > /dev/null <<EOF
+# CloudWatch Agent configuration
+cat <<EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
 {
   "metrics": {
     "metrics_collected": {
@@ -44,14 +43,18 @@ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
   -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
   -s
 
-# Install and start SSM Agent
+# Install and enable SSM Agent
 sudo snap install amazon-ssm-agent --classic
 sudo systemctl enable amazon-ssm-agent
 sudo systemctl start amazon-ssm-agent
 
-# Run WordPress container with CloudWatch logs enabled
+# Remove any existing container
+sudo docker rm -f wordpress || true
+
+# Run WordPress container with logging and restart always
 sudo docker run -d \
   --name wordpress \
+  --restart always \
   -p 80:80 \
   -e WORDPRESS_DB_HOST=${db_host} \
   -e WORDPRESS_DB_USER=${db_username} \
