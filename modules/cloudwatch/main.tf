@@ -104,4 +104,9 @@ resource "aws_cloudwatch_dashboard" "rds_dashboard" {
 resource "aws_cloudwatch_log_group" "wordpress_logs" {
   name              = "/ec2/wordpress"
   retention_in_days = 7
+
+  lifecycle {
+    ignore_changes    = [name]
+    prevent_destroy   = false
+  }
 }

@@ -5,6 +5,7 @@ resource "aws_instance" "wordpress" {
   vpc_security_group_ids = var.security_group_ids
   iam_instance_profile   = var.iam_instance_profile
 
+
   user_data = var.user_data
 
   tags = {

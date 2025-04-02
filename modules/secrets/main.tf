@@ -4,10 +4,8 @@ resource "random_password" "db_password" {
   override_special   = "!#$%^&*()-_=+[]{}<>:?"
 }
 
-
-
 resource "aws_secretsmanager_secret" "db_password" {
-  name        = "wordpress-db-password-v3"
+  name        = "wordpress-db-password-v4"  
   description = "WordPress database password"
 }
 
