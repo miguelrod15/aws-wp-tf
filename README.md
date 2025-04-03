@@ -1,21 +1,26 @@
-# aws-wp-tf
+# ✅ Fully Automated WordPress Infrastructure on AWS with Terraform
 
-# AWS WordPress Terraform
+This repository contains a complete and modular Terraform setup to deploy WordPress on AWS using best practices — including EC2, RDS, VPC, CloudWatch, IAM, and Secrets Manager.
 
-This repository contains infrastructure as code (IaC) configuration to provision a WordPress environment on AWS using Terraform and Docker.
+---
 
-## How to Use
+## 📁 Project Structure
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/aws-wp-tf.git
-   cd aws-wp-tf
 
-## 📁 Key Files
+### 📄 Root Files
 
-- `ec2.tf` – EC2 instance with Docker + WordPress
-- `user_data.sh` – Startup script for EC2
-- `iam.tf` – IAM role for EC2 (SSM + CloudWatch)
-- `cloudwatch.tf` – Dashboards and Log Groups
-- `backends.tf` – Remote state (S3)
-- `.github/workflows/terraform.yml` – GitHub Actions pipeline
+├── backend.tf ├── provider.tf ├── outputs.tf ├── variables.tf ├── user_data.sh
+
+
+### 📦 Modules
+
+modules/ 
+├── ec2/ │ ├── main.tf │ ├── variables.tf │ └── outputs.tf 
+├── rds/ │ ├── main.tf │ ├── variables.tf │ └── outputs.tf 
+├── vpc/ │ ├── main.tf │ ├── variables.tf │ └── outputs.tf 
+├── security_groups/ │ ├── main.tf │ ├── variables.tf │ └── outputs.tf 
+├── secrets/ │ ├── main.tf │ ├── variables.tf │ └── outputs.tf 
+├── iam/ │ ├── main.tf │ ├── variables.tf │ └── outputs.tf 
+└── cloudwatch/ ├── main.tf ├── variables.tf └── outputs.tf
+
+---
