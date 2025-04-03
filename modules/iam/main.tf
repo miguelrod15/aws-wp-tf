@@ -51,6 +51,11 @@ resource "aws_iam_role_policy" "least_privilege_policy" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "ssm_core_attach" {
+  role       = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
 resource "aws_iam_instance_profile" "ec2_instance_profile" {
   name = "ec2-instance-profile-v4"
   role = aws_iam_role.ec2_role.name
