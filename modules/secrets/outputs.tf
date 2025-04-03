@@ -3,8 +3,11 @@ output "db_password" {
   sensitive = true
 }
 
-
 output "secret_name" {
   description = "Name of the stored secret"
   value       = aws_secretsmanager_secret.db_password.name
+}
+
+output "secret_arn" {
+  value = aws_secretsmanager_secret.db_password.arn
 }
