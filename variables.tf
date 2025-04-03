@@ -14,12 +14,9 @@ variable "vpc_cidr" {
 }
 
 # Subnet CIDRs
-variable "public_subnet_cidr_a" {
-  default = "10.0.10.0/24"
-}
-
-variable "public_subnet_cidr_b" {
-  default = "10.0.11.0/24"
+variable "public_subnet_cidr" {
+  description = "CIDR block for the public subnet"
+  default     = "10.0.1.0/24"
 }
 
 variable "public_subnet_az" {
@@ -29,11 +26,11 @@ variable "public_subnet_az" {
 
 
 variable "private_subnet_cidr_a" {
-  default = "10.0.12.0/24"
+  default = "10.0.3.0/24"
 }
 
 variable "private_subnet_cidr_b" {
-  default = "10.0.13.0/24"
+  default = "10.0.4.0/24"
 }
 
 

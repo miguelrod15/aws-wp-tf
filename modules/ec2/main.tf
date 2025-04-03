@@ -5,15 +5,10 @@ resource "aws_instance" "wordpress" {
   vpc_security_group_ids = var.security_group_ids
   iam_instance_profile   = var.iam_instance_profile
 
-  user_data = templatefile(var.user_data, {
-    db_host     = var.db_host
-    db_username = var.db_username
-    db_password = var.db_password
-    db_name     = var.db_name
-    region      = var.region
-  })
+
+  user_data = var.user_data
 
   tags = {
-    Name = var.name
+    Name = var.instance_name
   }
 }

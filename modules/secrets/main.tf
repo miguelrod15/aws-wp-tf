@@ -5,7 +5,7 @@ resource "random_password" "db_password" {
 }
 
 resource "aws_secretsmanager_secret" "db_password" {
-  name        = "wordpress-db-password-v6"  
+  name        = "wordpress-db-password-v10"  
   description = "WordPress database password"
 }
 
